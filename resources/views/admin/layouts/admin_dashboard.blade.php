@@ -27,7 +27,7 @@
         </li>
         {{-- @if(auth()->check() && auth()->user()->user_type === 'admin') --}}
             <li>
-                <a style="text-decoration: none;" href="#">
+                <a style="text-decoration: none;" href="{{ route('admin.user.management') }}">
                     <i class='bx bxs-user'></i>
                     <span class="text">User Management</span>
                 </a>

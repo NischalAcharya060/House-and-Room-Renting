@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\Admin\UserController;
+
 
 
 
@@ -35,14 +37,20 @@ Route::group(['middleware' => 'guest'], function () {
 //Logout Route
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
+// Admin Routes
+Route::middleware('auth')->group(function () {
+    Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+});
 
-//Admin Routes
-Route::get('/admin_dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+//user Management Routes
+Route::get('/user_management', [UserController::class, 'index'])->name('admin.user.management');
+Route::get('/admin/users/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+Route::put('/admin/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+Route::delete('/admin/users/{id}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 
 
 
-
-
-
-//User Route
-Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+// User Route
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('user.dashboard');
+});
