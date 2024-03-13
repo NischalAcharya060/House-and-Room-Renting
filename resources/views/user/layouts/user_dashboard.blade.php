@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Admin Dashboard</title>
+    <title>@yield('title')</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -14,10 +14,10 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="text-center">Admin Dashboard</h3>
+                        <h3 class="text-center">@yield('header')</h3>
                     </div>
                     <div class="card-body">
-                        <p>Welcome to the admin dashboard!</p>
+                        @yield('content')
                     </div>
                 </div>
             </div>
