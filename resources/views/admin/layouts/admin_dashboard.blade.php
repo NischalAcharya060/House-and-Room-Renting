@@ -25,20 +25,26 @@
                 <span class="text">Dashboard</span>
             </a>
         </li>
-        {{-- @if(auth()->check() && auth()->user()->user_type === 'admin') --}}
+        @if(auth()->check() && auth()->user()->user_type === 'admin')
             <li>
                 <a style="text-decoration: none;" href="{{ route('admin.user.management') }}">
                     <i class='bx bxs-user'></i>
                     <span class="text">User Management</span>
                 </a>
             </li>
-        {{-- @endif --}}
+        @endif
+        <li>
+            <a style="text-decoration: none;" href="{{ route('admin.properties.index') }}">
+                <i class='bx bxs-home'></i>
+                <span class="text">Properties</span>
+            </a>
+        </li>        
         <li>
             <a style="text-decoration: none;" href="#">
-                <i class='bx bx-home'></i>
+                <i class='bx bxs-key'></i>
                 <span class="text">Rentings</span>
             </a>
-        </li>
+        </li>        
     </ul>
     <ul class="side-menu">
         <li>
