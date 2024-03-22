@@ -14,7 +14,7 @@
 <section id="sidebar">
     <a href="{{route('admin.dashboard')}}" class="brand" style="text-decoration: none;">
         <div>
-            <img src="{{ asset('img/logo.jpg') }}" alt="logo" style="width: 65px;" />
+            <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 65px;" />
         </div>
         <span class="text">Bashai</span>
     </a>

@@ -43,7 +43,7 @@
             <div class="col-md-6">
                 <div class="card">
                     <div class="card-header">
-                        <img src="{{ asset('img/logo.jpg') }}" alt="Logo" class="logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="logo">
                         <h3>Register</h3>
                     </div>
                     @if(session('success'))

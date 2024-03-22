@@ -692,7 +692,7 @@
     <div class="footer-brand">
 
       <a href="#" class="logo">
-        <img src="{{ asset('img/logo.jpg') }}" alt="Homeverse logo">
+        <img src="{{ asset('img/logo.png') }}" alt="Bashai logo">
       </a>
 
       <p class="section-text">

@@ -9,6 +9,7 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.1/css/boxicons.min.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet">
@@ -52,7 +53,7 @@
           <div class="container">
     
             <a href="#" class="logo">
-              <img src="{{ asset('img/logo.jpg') }}" alt="logo" style="width: 65px;">
+              <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 65px;">
             </a>
     
             <nav class="navbar" data-navbar>
@@ -60,7 +61,7 @@
               <div class="navbar-top">
     
                 <a href="#" class="logo">
-                  <img src="{{ asset('img/logo.jpg') }}" alt=" logo">
+                  <img src="{{ asset('img/logo.png') }}" alt=" logo">
                 </a>
     
                 <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
@@ -85,11 +86,11 @@
                   </li>
     
                   <li>
-                    <a href="#property" class="navbar-link" data-nav-link>Property</a>
+                    <a href="#" class="navbar-link" data-nav-link>Property</a>
                   </li>
     
                   <li>
-                    <a href="#contact" class="navbar-link" data-nav-link>Contact</a>
+                    <a href="#" class="navbar-link" data-nav-link>Contact</a>
                   </li>
     
                 </ul>
@@ -111,11 +112,11 @@
                 <span>Profile</span>
               </button>
     
-              <button class="header-bottom-actions-btn" aria-label="Cart">
-                <ion-icon name="cart-outline"></ion-icon>
-    
-                <span>Cart</span>
-              </button>
+              <button class="header-bottom-actions-btn" aria-label="Logout">
+                <a href="{{ route('logout') }}" style="text-decoration: none; color: black;">
+                    <i class='bx bx-log-out-circle' style="font-size: 20px; text-align: right;"></i>
+                </a>
+            </button>            
     
               <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
                 <ion-icon name="menu-outline"></ion-icon>
