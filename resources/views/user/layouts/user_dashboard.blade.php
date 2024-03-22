@@ -27,7 +27,7 @@
                 <a href="mailto:info@.com" class="header-top-link">
                   <ion-icon name="mail-outline"></ion-icon>
     
-                  <span>info@.com</span>
+                  <span>info@bashai.com</span>
                 </a>
               </li>
     
@@ -35,7 +35,7 @@
                 <a href="#" class="header-top-link">
                   <ion-icon name="location-outline"></ion-icon>
     
-                  <address>15/A, Nest Tower, NYC</address>
+                  <address>ithari, Nepal</address>
                 </a>
               </li>
     
@@ -86,10 +86,6 @@
     
                   <li>
                     <a href="#property" class="navbar-link" data-nav-link>Property</a>
-                  </li>
-    
-                  <li>
-                    <a href="#blog" class="navbar-link" data-nav-link>Blog</a>
                   </li>
     
                   <li>

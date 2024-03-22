@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="1060218935939-v81qg0soalb65v02bb0bj6o7aopip9l1.apps.googleusercontent.com">
     <title>Login</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
@@ -89,6 +90,9 @@
                     <div class="register-link">
                         <p>Don't have an account? <a href="{{ route('register') }}" style="text-decoration: none;">Register here</a></p>
                     </div>
+                    <button onclick="window.location='{{ route('login.google') }}'" class="btn google btn-danger btn-lg btn-block mt-3">
+                        <i class="mdi mdi-google mr-2"></i> Log In with Google
+                    </button>
                 </div>
             </div>
         </div>
@@ -96,6 +100,7 @@
 </main>
 
 <!-- Bootstrap JS (optional) -->
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
