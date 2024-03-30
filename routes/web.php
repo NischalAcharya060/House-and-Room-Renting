@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserPropertyController;
@@ -93,5 +94,11 @@ Route::middleware('auth')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::get('/user/profile', [ProfileController::class, 'show'])->name('user.profile');
     Route::post('/user/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
+});
+
+//Admin Profile Route
+Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
+    Route::get('/admin/profile', [AdminProfileController::class, 'show'])->name('admin.profile');
+    Route::post('/admin/profile/update', [AdminProfileController::class, 'update'])->name('admin.profile.update');
 });
 

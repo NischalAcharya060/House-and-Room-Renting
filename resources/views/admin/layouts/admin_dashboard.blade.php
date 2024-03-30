@@ -38,13 +38,13 @@
                 <i class='bx bxs-home'></i>
                 <span class="text">Properties</span>
             </a>
-        </li>        
+        </li>
         <li>
             <a style="text-decoration: none;" href="#">
                 <i class='bx bxs-key'></i>
                 <span class="text">Rentings</span>
             </a>
-        </li>        
+        </li>
     </ul>
     <ul class="side-menu">
         <li>
@@ -76,7 +76,7 @@
                 @endif
             </a>
             <div class="dropdown-content" id="profileDropdownContent">
-                <a href="#" style="text-decoration: none;">Profile</a>
+                <a href="{{ route('admin.profile') }}" style="text-decoration: none;">Profile</a>
                 <a href="{{ route('logout') }}" style="text-decoration: none;">Logout</a>
             </div>
         </div>
