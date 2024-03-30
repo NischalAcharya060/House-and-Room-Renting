@@ -21,43 +21,50 @@ class PropertyController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'location' => 'required',
-        'map_coordinates' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'price' => 'required|numeric',
-        'property_type' => 'required',
-        'property_owner' => 'required',
-        'property_owner_phone_no' => 'required',
-    ]);
+    {
+        try {
+            // Validate the request data
+            $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'map_coordinates' => 'nullable',
+                'price' => 'required|numeric',
+                'property_type' => 'required',
+                'property_owner' => 'required',
+                'property_owner_phone_no' => 'nullable',
+            ]);
 
-    try {
-        $property = new Property();
-        $property->name = $request->name;
-        $property->description = $request->description;
-        $property->location = $request->location;
-        $property->map_coordinates = $request->map_coordinates;
-        $property->price = $request->price;
-        $property->property_type = $request->property_type;
-        $property->property_owner = $request->property_owner;
-        $property->property_owner_phone_no = $request->property_owner_phone_no;
+            // Create a new Property instance
+            $property = new Property();
+            $property->name = $request->name;
+            $property->description = $request->description;
+            $property->location = $request->location;
+            $property->map_coordinates = $request->map_coordinates;
+            $property->price = $request->price;
+            $property->property_type = $request->property_type;
+            $property->property_owner = $request->property_owner;
+            $property->property_owner_phone_no = $request->property_owner_phone_no;
 
-        if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('property_images', 'public');
-            $property->image_url = $imagePath;
+            // Handle file upload
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('property_images', 'public');
+                $property->image_url = $imagePath;
+            }
+
+            // Save the property
+            $property->save();
+
+            // Redirect with success message
+            return redirect()->route('admin.properties.index')->with('success', 'Property created successfully');
+        } catch (\Exception $e) {
+            // Log the exception
+            \Log::error('Failed to create property: ' . $e->getMessage());
+
+            // Redirect back with error message
+            return redirect()->back()->with('error', 'Failed to create property. Please try again.');
         }
-
-        $property->save();
-
-        return redirect()->route('admin.properties.index')->with('success', 'Property created successfully');
-    } catch (\Exception $e) {
-        dd($e);
-        return redirect()->back()->with('error', 'Failed to create property: ' . $e->getMessage());
     }
-}
 
     public function show($id)
     {
@@ -80,45 +87,59 @@ class PropertyController extends Controller
     }
 
     public function update(Request $request, $id)
-{
-    $request->validate([
-        'name' => 'required',
-        'description' => 'required',
-        'location' => 'required',
-        'map_coordinates' => 'required',
-        'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048', // max 2MB
-        'price' => 'required|numeric',
-        'property_type' => 'required',
-        'property_owner' => 'required',
-        'property_owner_phone_no' => 'required',
-    ]);
+    {
+        try {
+            // Validate the request data
+            $request->validate([
+                'name' => 'required',
+                'description' => 'required',
+                'location' => 'required',
+                'map_coordinates' => 'nullable',
+                'price' => 'required|numeric',
+                'property_type' => 'required',
+                'property_owner' => 'required',
+                'property_owner_phone_no' => 'nullable',
+            ]);
 
-    try {
-        $property = Property::findOrFail($id);
-        $property->name = $request->name;
-        $property->description = $request->description;
-        $property->location = $request->location;
-        $property->map_coordinates = $request->map_coordinates;
-        $property->price = $request->price;
-        $property->property_type = $request->property_type;
-        $property->property_owner = $request->property_owner;
-        $property->property_owner_phone_no = $request->property_owner_phone_no;
+            // Find the property to update
+            $property = Property::findOrFail($id);
 
-        if ($request->hasFile('image')) {
-            // Delete previous image
-            Storage::delete($property->image_url);
+            // Update property fields
+            $property->name = $request->name;
+            $property->description = $request->description;
+            $property->location = $request->location;
+            $property->map_coordinates = $request->map_coordinates;
+            $property->price = $request->price;
+            $property->property_type = $request->property_type;
+            $property->property_owner = $request->property_owner;
+            $property->property_owner_phone_no = $request->property_owner_phone_no;
 
-            $imagePath = $request->file('image')->store('property_images');
-            $property->image_url = $imagePath;
+            // Handle file upload
+            if ($request->hasFile('image')) {
+                // Delete previous image if exists
+                if ($property->image_url) {
+                    Storage::delete($property->image_url);
+                }
+
+                // Store new image
+                $imagePath = $request->file('image')->store('property_images');
+                $property->image_url = $imagePath;
+            }
+
+            // Save the updated property
+            $property->save();
+
+            // Redirect with success message
+            return redirect()->route('admin.properties.index')->with('success', 'Property updated successfully');
+        } catch (\Exception $e) {
+            dd($e);
+            // Log the exception
+            \Log::error('Failed to update property: ' . $e->getMessage());
+
+            // Redirect back with error message
+            return redirect()->back()->with('error', 'Failed to update property. Please try again.');
         }
-
-        $property->save();
-
-        return redirect()->route('admin.properties.index')->with('success', 'Property updated successfully');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Failed to update property: ' . $e->getMessage());
     }
-}
 
 
     public function destroy($id)

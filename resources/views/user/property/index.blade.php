@@ -19,10 +19,10 @@
                             <h5 class="card-title">{{ $property->name }}</h5>
                             <p class="card-text">{{ $property->description }}</p>
                             <p class="card-text">Location: {{ $property->location }}</p>
-                            <p class="card-text">Price: {{ $property->price }}</p>
+                            <p class="card-text">Price: Rs. {{ $property->price }}</p>
                             <div class="d-grid gap-2">
-                                <a href="#" class="btn btn-custom-primary">Rent</a>
-                                <a href="#" class="btn btn-custom-secondary">View Property</a>
+                                <a href="{{ route('user.properties.rent', ['property' => $property->id]) }}" class="btn btn-custom-primary">Rent</a>
+                                <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn btn-custom-secondary">View Property</a>
                             </div>
                         </div>
                     </div>

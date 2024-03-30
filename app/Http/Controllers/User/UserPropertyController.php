@@ -16,4 +16,10 @@ class UserPropertyController extends Controller
 
         return view('user.property.index', ['properties' => $properties]);
     }
+
+    public function show($id)
+    {
+        $property = Property::findOrFail($id);
+        return view('user.property.show', compact('property'));
+    }
 }

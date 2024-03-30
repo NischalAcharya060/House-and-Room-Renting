@@ -82,7 +82,10 @@ Route::delete('/admin/properties/{property}', [PropertyController::class, 'destr
 //user properties route
 Route::middleware('auth')->group(function () {
     Route::get('/user/properties', [UserPropertyController::class, 'index'])->name('user.properties.index');
+    Route::get('/user/properties/{property}', [UserPropertyController::class, 'show'])->name('user.properties.show');
+    Route::post('/user/properties/{property}/rent', [UserPropertyController::class, 'rent'])->name('user.properties.rent');
 });
+
 
 //Contact route
 Route::middleware('auth')->group(function () {
