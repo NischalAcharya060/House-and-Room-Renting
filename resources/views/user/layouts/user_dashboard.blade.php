@@ -13,6 +13,11 @@
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
       rel="stylesheet">
+    <style>
+        a:hover{
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
     <header class="header" data-header>
@@ -76,19 +81,19 @@
                 <ul class="navbar-list">
 
                   <li>
-                    <a href="#home" class="navbar-link" data-nav-link>Home</a>
+                    <a href="{{ route('user.dashboard') }}" class="navbar-link" data-nav-link>Home</a>
                   </li>
 
                   <li>
-                    <a href="#about" class="navbar-link" data-nav-link>About</a>
+                    <a href="{{ route('user.dashboard') }}" class="navbar-link" data-nav-link>About</a>
                   </li>
 
                   <li>
-                    <a href="#" class="navbar-link" data-nav-link>Property</a>
+                    <a href="{{ route('user.properties.index') }}" class="navbar-link" data-nav-link>Property</a>
                   </li>
 
                   <li>
-                    <a href="#" class="navbar-link" data-nav-link>Contact</a>
+                    <a href="{{ route('user.contact.showform') }}" class="navbar-link" data-nav-link>Contact</a>
                   </li>
 
                 </ul>
@@ -206,19 +211,19 @@
                     <ul class="footer-list">
 
                         <li>
-                            <p class="footer-list-title">Home</p>
+                            <a href="{{ route('user.dashboard') }}" class="footer-link">Home</a>
                         </li>
 
                         <li>
-                            <a href="#" class="footer-link">About</a>
+                            <a href="{{ route('user.dashboard') }}" class="footer-link">About</a>
                         </li>
 
                         <li>
-                            <a href="#" class="footer-link">Property</a>
+                            <a href="{{ route('user.properties.index') }}" class="footer-link">Property</a>
                         </li>
 
                         <li>
-                            <a href="#" class="footer-link">Contact</a>
+                            <a href="{{ route('user.contact.showform') }}" class="footer-link">Contact</a>
                         </li>
 
                     </ul>

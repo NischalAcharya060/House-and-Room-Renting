@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\UserPropertyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -73,4 +75,15 @@ Route::get('/admin/properties/{property}', [PropertyController::class, 'show'])-
 Route::get('/admin/properties/{property}/edit', [PropertyController::class, 'edit'])->name('admin.properties.edit');
 Route::put('/admin/properties/{property}', [PropertyController::class, 'update'])->name('admin.properties.update');
 Route::delete('/admin/properties/{property}', [PropertyController::class, 'destroy'])->name('admin.properties.destroy');
+});
+
+//user properties route
+Route::middleware('auth')->group(function () {
+    Route::get('/user/properties', [UserPropertyController::class, 'index'])->name('user.properties.index');
+});
+
+//Contact route
+Route::middleware('auth')->group(function () {
+    Route::get('/user/contact', [ContactController::class, 'showForm'])->name('user.contact.showform');
+    Route::post('/user/contact', [ContactController::class, 'submitForm'])->name('user.contact.submitform');
 });

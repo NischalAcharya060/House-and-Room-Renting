@@ -11,10 +11,10 @@ class PropertyController extends Controller
 {
     public function index()
     {
-        $properties = Property::paginate(5); 
+        $properties = Property::paginate(5);
         return view('admin.property.index', compact('properties'));
     }
-    
+
     public function create()
     {
         return view('admin.property.create');
@@ -54,6 +54,7 @@ class PropertyController extends Controller
 
         return redirect()->route('admin.properties.index')->with('success', 'Property created successfully');
     } catch (\Exception $e) {
+        dd($e);
         return redirect()->back()->with('error', 'Failed to create property: ' . $e->getMessage());
     }
 }
