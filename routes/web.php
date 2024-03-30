@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\ContactController;
+use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserPropertyController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
@@ -87,3 +88,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/user/contact', [ContactController::class, 'showForm'])->name('user.contact.showform');
     Route::post('/user/contact', [ContactController::class, 'submitForm'])->name('user.contact.submitform');
 });
+
+//User Profile Route
+Route::middleware('auth')->group(function () {
+    Route::get('/user/profile', [ProfileController::class, 'show'])->name('user.profile');
+    Route::post('/user/profile/update', [ProfileController::class, 'update'])->name('user.profile.update');
+});
+

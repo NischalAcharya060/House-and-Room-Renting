@@ -85,7 +85,7 @@
                   </li>
 
                   <li>
-                    <a href="{{ route('user.dashboard') }}" class="navbar-link" data-nav-link>About</a>
+                    <a href="{{ route('user.dashboard') }}#about" class="navbar-link" data-nav-link>About</a>
                   </li>
 
                   <li>
@@ -104,8 +104,9 @@
             <div class="header-bottom-actions">
 
               <button class="header-bottom-actions-btn" aria-label="Profile">
+                  <a href="{{ route('user.profile') }}" style="text-decoration: none; color: black;">
                 <ion-icon name="person-outline"></ion-icon>
-
+                  </a>
                 <span>Profile</span>
               </button>
 
@@ -215,7 +216,7 @@
                         </li>
 
                         <li>
-                            <a href="{{ route('user.dashboard') }}" class="footer-link">About</a>
+                            <a href="{{ route('user.dashboard') }}#about" class="footer-link">About</a>
                         </li>
 
                         <li>
@@ -231,7 +232,7 @@
                     <ul class="footer-list">
 
                         <li>
-                            <a href="#" class="footer-link">My account</a>
+                            <a href=" {{ route('user.profile') }}" class="footer-link">My account</a>
                         </li>
 
                         <li>
