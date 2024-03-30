@@ -18,122 +18,243 @@
     <header class="header" data-header>
 
         <div class="overlay" data-overlay></div>
-    
+
         <div class="header-top">
           <div class="container">
-    
+
             <ul class="header-top-list">
-    
+
               <li>
                 <a href="mailto:info@.com" class="header-top-link">
                   <ion-icon name="mail-outline"></ion-icon>
-    
+
                   <span>info@bashai.com</span>
                 </a>
               </li>
-    
+
               <li>
                 <a href="#" class="header-top-link">
                   <ion-icon name="location-outline"></ion-icon>
-    
+
                   <address>ithari, Nepal</address>
                 </a>
               </li>
-    
+
             </ul>
-    
+
             <div class="wrapper">
               <button class="header-top-btn">Add Listing</button>
             </div>
-    
+
           </div>
         </div>
-    
+        <br>
+        <br>
+
         <div class="header-bottom">
           <div class="container">
-    
+
             <a href="#" class="logo">
               <img src="{{ asset('img/logo.png') }}" alt="logo" style="width: 65px;">
             </a>
-    
+
             <nav class="navbar" data-navbar>
-    
+
               <div class="navbar-top">
-    
+
                 <a href="#" class="logo">
                   <img src="{{ asset('img/logo.png') }}" alt=" logo">
                 </a>
-    
+
                 <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
                   <ion-icon name="close-outline"></ion-icon>
                 </button>
-    
+
               </div>
-    
+
               <div class="navbar-bottom">
                 <ul class="navbar-list">
-    
+
                   <li>
                     <a href="#home" class="navbar-link" data-nav-link>Home</a>
                   </li>
-    
+
                   <li>
                     <a href="#about" class="navbar-link" data-nav-link>About</a>
                   </li>
-    
-                  <li>
-                    <a href="#service" class="navbar-link" data-nav-link>Service</a>
-                  </li>
-    
+
                   <li>
                     <a href="#" class="navbar-link" data-nav-link>Property</a>
                   </li>
-    
+
                   <li>
                     <a href="#" class="navbar-link" data-nav-link>Contact</a>
                   </li>
-    
+
                 </ul>
               </div>
-    
+
             </nav>
-    
+
             <div class="header-bottom-actions">
-    
-              <button class="header-bottom-actions-btn" aria-label="Search">
-                <ion-icon name="search-outline"></ion-icon>
-    
-                <span>Search</span>
-              </button>
-    
+
               <button class="header-bottom-actions-btn" aria-label="Profile">
                 <ion-icon name="person-outline"></ion-icon>
-    
+
                 <span>Profile</span>
               </button>
-    
+
               <button class="header-bottom-actions-btn" aria-label="Logout">
                 <a href="{{ route('logout') }}" style="text-decoration: none; color: black;">
                     <i class='bx bx-log-out-circle' style="font-size: 20px; text-align: right;"></i>
                 </a>
-            </button>            
-    
+            </button>
+
               <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu">
                 <ion-icon name="menu-outline"></ion-icon>
-    
+
                 <span>Menu</span>
               </button>
-    
+
             </div>
-    
+
           </div>
         </div>
-    
+
       </header>
                     <div class="card-body">
                         @yield('content')
                     </div>
-                
+
+    <!--
+    - #CTA
+  -->
+
+    <section class="cta">
+        <div class="container">
+
+            <div class="cta-card">
+                <div class="card-content">
+                    <h2 class="h2 card-title">Looking for a dream home?</h2>
+
+                    <p class="card-text">We can help you realize your dream of a new home</p>
+                </div>
+
+                <button class="btn cta-btn">
+                    <span>Explore Properties</span>
+
+                    <ion-icon name="arrow-forward-outline"></ion-icon>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    </article>
+    </main>
+    <!--
+    - #FOOTER
+    -->
+
+    <footer class="footer">
+
+        <div class="footer-top">
+            <div class="container">
+
+                <div class="footer-brand">
+
+                    <a href="#" class="logo">
+                        <img src="{{ asset('img/logo.png') }}" alt="Bashai logo">
+                    </a>
+
+                    <p class="section-text">
+                        Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
+                    </p>
+
+                    <ul class="contact-list">
+
+                        <li>
+                            <a href="#" class="contact-link">
+                                <ion-icon name="location-outline"></ion-icon>
+
+                                <address>Ithari, Nepal</address>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="tel:+0123456789" class="contact-link">
+                                <ion-icon name="call-outline"></ion-icon>
+
+                                <span>+0123-456789</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="mailto:info@bashai.com" class="contact-link">
+                                <ion-icon name="mail-outline"></ion-icon>
+
+                                <span>info@bashai.com</span>
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+                <div class="footer-link-box">
+
+                    <ul class="footer-list">
+
+                        <li>
+                            <p class="footer-list-title">Home</p>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer-link">About</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer-link">Property</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer-link">Contact</a>
+                        </li>
+
+                    </ul>
+
+                    <ul class="footer-list">
+
+                        <li>
+                            <a href="#" class="footer-link">My account</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer-link">Wish List</a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="footer-link">Order tracking</a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+
+                <p class="copyright">
+                    &copy; 2022 <a href="#">Bashai</a>. All Rights Reserved.
+                </p>
+
+            </div>
+        </div>
+
+    </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
