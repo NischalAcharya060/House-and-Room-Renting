@@ -22,6 +22,7 @@ class CreatePropertiesTable extends Migration
             $table->string('property_type')->nullable();
             $table->string('property_owner')->nullable();
             $table->string('property_owner_phone_no')->nullable();
+            $table->string('status')->default('available');
             $table->timestamps();
         });
     }

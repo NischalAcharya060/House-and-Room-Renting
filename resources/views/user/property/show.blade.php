@@ -27,13 +27,16 @@
                                 </ul>
                             </div>
 {{--                            <div class="col-md-6">--}}
-{{--                                <div id="map" style="height: 300px;"></div>--}}
+{{--                                <div id="map" class="property-map"></div>--}}
 {{--                            </div>--}}
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
-                            <a href="{{ route('user.properties.rent', ['property' => $property->id]) }}" class="btn btn-custom-primary">Rent</a>
-                            <a href="{{ route('user.properties.index') }}" class="btn btn-custom-secondary">Back to Properties</a>
+                            <form method="POST" action="{{ route('user.properties.rent', ['property' => $property->id]) }}">
+                                @csrf
+                                <button type="submit" class="btn btn-primary">Rent</button>
+                            </form>
+                            <a href="{{ route('user.properties.index') }}" class="btn btn-secondary">Back to Properties</a>
                         </div>
                     </div>
                 </div>
@@ -56,25 +59,38 @@
 @endsection
 
 @section('styles')
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
     <style>
         /* Custom button styles */
-        .btn-custom-primary {
+        .btn-primary {
             background-color: #007bff;
             border-color: #007bff;
         }
 
-        .btn-custom-secondary {
+        .btn-secondary {
             background-color: #6c757d;
             border-color: #6c757d;
         }
 
-        .btn-custom-primary:hover,
-        .btn-custom-secondary:hover {
+        .btn-primary:hover,
+        .btn-secondary:hover {
             background-color: #0056b3;
             border-color: #0056b3;
+        }
+
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .property-map {
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 10px;
         }
     </style>
 @endsection
