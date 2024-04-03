@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\AdminRentingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserPropertyController;
@@ -105,3 +106,8 @@ Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
     Route::post('/admin/profile/update', [AdminProfileController::class, 'update'])->name('admin.profile.update');
 });
 
+// Admin Renting Route
+Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
+    Route::get('/admin/renting', [AdminRentingController::class, 'index'])->name('admin.renting.index');
+
+});

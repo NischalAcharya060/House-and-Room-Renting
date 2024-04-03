@@ -26,4 +26,9 @@ class Property extends Model
         'property_owner_phone_no',
         'status',
     ];
+
+    public function rentals()
+    {
+        return $this->hasMany(Rental::class);
+    }
 }

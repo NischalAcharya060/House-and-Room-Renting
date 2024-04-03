@@ -40,7 +40,7 @@
             </a>
         </li>
         <li>
-            <a style="text-decoration: none;" href="#">
+            <a style="text-decoration: none;" href="{{ route('admin.renting.index') }}">
                 <i class='bx bxs-key'></i>
                 <span class="text">Rentings</span>
             </a>

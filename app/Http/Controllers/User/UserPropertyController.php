@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Rental;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Illuminate\Support\Facades\Auth;
 
 
 class UserPropertyController extends Controller
@@ -23,23 +25,32 @@ class UserPropertyController extends Controller
         return view('user.property.show', compact('property'));
     }
 
-    public function rent(Property $property)
+    public function rent(Property $property, Request $request)
     {
         try {
             // Check if the property is available for rent
             if ($property->status === 'available') {
-                // Update the status of the property to "rented"
+                \DB::beginTransaction();
+
                 $property->status = 'rented';
                 $property->save();
 
-                // Redirect back to the properties page with a success message
+                // Create a new rental record with the specified rental duration
+                Rental::create([
+                    'property_id' => $property->id,
+                    'user_id' => Auth::id(),
+                    'rental_duration' => $request->input('rental_duration'), // Get rental duration input from the form
+                ]);
+
+                \DB::commit();
+
                 return redirect()->route('user.properties.index')->with('success', 'Property rented successfully.');
             } else {
-                // Redirect back to the properties page with an error message if the property is not available for rent
-                return redirect()->route('user.properties.index')->with('error', 'This property is not available for rent or already rented.');
+                return redirect()->route('user.properties.index')->with('error', 'This property is already rented.');
             }
         } catch (\Exception $e) {
-            // Handle any exceptions that may occur during the rental process
+            \DB::rollback();
+
             return redirect()->route('user.properties.index')->with('error', 'An error occurred while renting the property.');
         }
     }
