@@ -53,6 +53,14 @@
                 </a>
             </li>
         @endif
+        @if(auth()->check() && auth()->user()->user_type === 'admin')
+            <li>
+                <a style="text-decoration: none;" href="{{ route('admin.contact.index') }}">
+                    <i class='bx bxs-message-square-detail'></i>
+                    <span class="text">Contact Form</span>
+                </a>
+            </li>
+        @endif
     </ul>
     <ul class="side-menu">
         <li>

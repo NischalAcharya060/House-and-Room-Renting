@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Mail\ContactFormSubmitted;
 use Illuminate\Http\Request;
+use App\Models\ContactMessage;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -23,6 +24,14 @@ class ContactController extends Controller
             'subject' => 'required|string|max:255',
             'message' => 'required|string',
         ]);
+
+        // Save the form data in the database
+        $contactMessage = new ContactMessage();
+        $contactMessage->name = $request->input('name');
+        $contactMessage->email = $request->input('email');
+        $contactMessage->subject = $request->input('subject');
+        $contactMessage->message = $request->input('message');
+        $contactMessage->save();
 
         // Send email with form data
         $name = $request->input('name');

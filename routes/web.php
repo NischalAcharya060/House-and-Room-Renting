@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminRentingController;
+use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProfileController;
@@ -123,3 +124,9 @@ Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
 Route::middleware(['auth', 'user_type:admin'])->group(function () {
 Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications.index');
 });
+
+// Admin Contact form Route
+Route::middleware(['auth', 'user_type:admin'])->group(function () {
+Route::get('/admin/contact-messages', [ContactMessageController::class, 'index'])->name('admin.contact.index');
+});
+
