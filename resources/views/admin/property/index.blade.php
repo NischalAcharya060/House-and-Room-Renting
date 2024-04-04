@@ -57,7 +57,7 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @if($property->image_url)
-                                    <img src="{{ asset('storage/property_images/' . $property->image_url) }}" alt="Property Image">
+                                    <img src="{{ asset('storage/' . $property->image_url) }}" alt="Property Image">
                                     @else
                                     <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" alt="Default Profile Picture" class="img-fluid">
                                     @endif

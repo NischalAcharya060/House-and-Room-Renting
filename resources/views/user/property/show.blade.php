@@ -12,6 +12,12 @@
             <table class="table table-bordered">
                 <tbody>
                 <tr>
+                    <div class="card mb-4">
+                        @if($property->image_url)
+                        <img src="{{ asset('storage/' . $property->image_url) }}" alt="Property Image">
+                        @else
+                            <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" alt="Default Profile Picture" class="card-img-top">
+                        @endif
                     <th>Name</th>
                     <td>{{ $property->name }}</td>
                 </tr>
