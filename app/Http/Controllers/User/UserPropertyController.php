@@ -55,4 +55,12 @@ class UserPropertyController extends Controller
         }
     }
 
+    public function myRenting()
+    {
+        $user = auth()->user();
+        $rentedProperties = $user->rentals()->with('property')->get();
+
+        return view('user.property.my_renting')->with('rentedProperties', $rentedProperties);
+    }
+
 }

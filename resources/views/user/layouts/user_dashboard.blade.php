@@ -104,6 +104,38 @@
             </nav>
 
             <div class="header-bottom-actions">
+                <ul>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="{{ route('user.profile') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            @if (auth()->check() && $user = auth()->user())
+                                <div class="d-flex align-items-center">
+                                    @if ($user->profile_picture && Storage::exists('public/profile_pictures/' . $user->profile_picture))
+                                        <img src="{{ asset('storage/profile_pictures/' . $user->profile_picture) }}" alt="Profile Picture" class="rounded-circle" style="width: 30px;">
+                                    @else
+                                        <img src="https://www.shareicon.net/data/256x256/2016/05/26/771188_man_512x512.png" alt="Default Profile Picture" class="rounded-circle" style="width: 30px;">
+                                    @endif
+                                    <span class="ml-2">{{ $user->name }}</span>
+                                </div>
+                            @endif
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item profile-link" href="{{ route('user.profile') }}">
+                                <i class='bx bxs-user'></i>
+                                Profile
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item bookmark-link" href=" {{ route('user.my-renting') }}">
+                                <i class='bx bxs-key'></i>
+                                My Renting
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('logout') }}" class="dropdown-item logout-link">
+                                <i class='bx bxs-door-open'></i>
+                                Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
 
               <button class="header-bottom-actions-btn" aria-label="Profile">
                   <a href="{{ route('user.profile') }}" style="text-decoration: none; color: black;">
