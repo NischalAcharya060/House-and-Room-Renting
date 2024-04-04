@@ -48,9 +48,8 @@
             </ul>
 
             <div class="wrapper">
-              <button class="header-top-btn">Add Listing</button>
+                <a href="{{ route('properties_submission.show') }}" class="header-top-btn" style="color: white;">Add Listing</a>
             </div>
-
           </div>
         </div>
         <br>

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminRentingController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserPropertyController;
+use App\Http\Controllers\User\UserPropertySubmissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
@@ -87,6 +88,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/user/properties/{property}/rent', [UserPropertyController::class, 'rent'])->name('user.properties.rent');
 });
 
+// User propertie submmission route
+Route::middleware('auth')->group(function () {
+    Route::get('/properties/submit', [UserPropertySubmissionController::class, 'show'])->name('properties_submission.show');
+    Route::post('/properties/submit', [UserPropertySubmissionController::class, 'store'])->name('properties_submission.store');
+});
 
 //Contact route
 Route::middleware('auth')->group(function () {

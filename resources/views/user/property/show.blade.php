@@ -34,12 +34,8 @@
                     <td>{{ $property->price }}</td>
                 </tr>
                 <tr>
-                    <th>Created At</th>
-                    <td>{{ $property->created_at }}</td>
-                </tr>
-                <tr>
-                    <th>Updated At</th>
-                    <td>{{ $property->updated_at }}</td>
+                    <th>Publish Date</th>
+                    <td>{{ \Carbon\Carbon::parse($property->updated_at)->format('F j, Y') }}</td>
                 </tr>
                 </tbody>
             </table>
