@@ -38,16 +38,16 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>S.N</th>
-                            <th>Property Image</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Location</th>
-                            <th>Price</th>
-                            <th>Map Coordinates</th>
-                            <th>Property Type</th>
-                            <th>Property Owner</th>
-                            <th>Property Owner Phone No</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">S.N</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Image</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Name</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Description</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Location</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Price</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Map Coordinates</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Type</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Owner</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Owner Phone No</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -57,9 +57,9 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>
                                     @if($property->image_url)
-                                    <img src="{{ asset('storage/' . $property->image_url) }}" alt="Property Image">
+                                        <img src="{{ asset('storage/' . $property->image_url) }}" alt="Property Image" class="img-fluid property-image">
                                     @else
-                                    <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" alt="Default Profile Picture" class="img-fluid">
+                                        <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" alt="Default Profile Picture" class="img-fluid property-image">
                                     @endif
                                 </td>
                                 <td>{{ $property->name }}</td>
@@ -72,16 +72,16 @@
                                 <td>{{ $property->property_owner_phone_no }}</td>
                                 <td>
                                     <a href="{{ route('admin.properties.show', $property->id) }}" class="btn btn-info btn-sm" title="View">
-                                        <i class='bx bx-show'></i>
+                                        <i class='bx bx-show'></i> 
                                     </a>
                                     <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-warning btn-sm" title="Edit">
-                                        <i class='bx bx-edit'></i>
+                                        <i class='bx bx-edit'></i> 
                                     </a>
                                     <form action="{{ route('admin.properties.destroy', $property->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete this property?')">
-                                            <i class='bx bx-trash'></i>
+                                            <i class='bx bx-trash'></i> 
                                         </button>
                                     </form>
                                 </td>
@@ -90,8 +90,19 @@
                     </tbody>
                 </table>
                 {{-- Pagination Links --}}
-                {{ $properties->links('vendor.pagination.bootstrap-4') }}
+                <div class="d-flex justify-content-center">
+                    {{ $properties->links('vendor.pagination.bootstrap-4') }}
+                </div>
             @endif
         </div>
     </div>
+@endsection
+
+@section('styles')
+    <style>
+        .property-image {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
 @endsection
