@@ -45,6 +45,14 @@
                 <span class="text">Rentings</span>
             </a>
         </li>
+        @if(auth()->check() && auth()->user()->user_type === 'admin')
+            <li>
+                <a style="text-decoration: none;" href="{{ route('admin.notifications.index') }}">
+                    <i class='bx bxs-bell'></i>
+                    <span class="text">Notification</span>
+                </a>
+            </li>
+        @endif
     </ul>
     <ul class="side-menu">
         <li>

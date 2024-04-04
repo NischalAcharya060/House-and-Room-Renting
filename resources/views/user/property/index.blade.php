@@ -36,9 +36,9 @@
                             <div class="d-grid gap-2">
                                 <form method="POST" action="{{ route('user.properties.rent', ['property' => $property->id]) }}">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary btn-block">Rent</button>
+                                    <button type="submit" class="btn ">Rent</button>
                                 </form>
-                                <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn btn-secondary btn-block">View Property</a>
+                                <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn">View Property</a>
                             </div>
                         </div>
                     </div>
@@ -51,23 +51,6 @@
 @section('styles')
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Custom button styles */
-        .btn-primary {
-            background-color: #007bff;
-            border-color: #007bff;
-        }
-
-        .btn-secondary {
-            background-color: #6c757d;
-            border-color: #6c757d;
-        }
-
-        .btn-primary:hover,
-        .btn-secondary:hover {
-            background-color: #0056b3;
-            border-color: #0056b3;
-        }
-
         .card {
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);

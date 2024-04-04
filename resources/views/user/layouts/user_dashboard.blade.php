@@ -17,6 +17,9 @@
         a:hover{
             text-decoration: none;
         }
+        .cta-btn:hover{
+            color: white;
+        }
     </style>
 </head>
 <body>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\AdminRentingController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\User\ContactController;
 use App\Http\Controllers\User\ProfileController;
 use App\Http\Controllers\User\UserPropertyController;
@@ -116,4 +117,9 @@ Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
 Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
     Route::get('/admin/renting', [AdminRentingController::class, 'index'])->name('admin.renting.index');
 
+});
+
+// Notification Route
+Route::middleware(['auth', 'user_type:admin'])->group(function () {
+Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications.index');
 });

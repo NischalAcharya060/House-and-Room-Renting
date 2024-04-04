@@ -54,7 +54,7 @@
                     <option value="12">1 year</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary">Rent Property</button>
+            <button type="submit" class="btn">Rent Property</button>
         </form>
     </div>
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
