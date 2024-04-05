@@ -29,12 +29,6 @@
                     <th>Location</th>
                     <td>{{ $property->location }}</td>
                 </tr>
-{{--                <tr>--}}
-{{--                    <th>Map</th>--}}
-{{--                    <td>--}}
-{{--                        <div id="map" style="height: 300px;"></div>--}}
-{{--                    </td>--}}
-{{--                </tr>--}}
                 <tr>
                     <th>Price</th>
                     <td>{{ $property->price }}</td>
@@ -42,6 +36,12 @@
                 <tr>
                     <th>Publish Date</th>
                     <td>{{ \Carbon\Carbon::parse($property->updated_at)->format('F j, Y') }}</td>
+                </tr>
+                <tr>
+                    <th>Map</th>
+                    <td>
+                        <div id="map" style="height: 300px;"></div>
+                    </td>
                 </tr>
                 </tbody>
             </table>

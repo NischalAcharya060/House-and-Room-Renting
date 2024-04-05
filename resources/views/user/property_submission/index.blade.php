@@ -33,8 +33,14 @@
 
                             <div class="form-group">
                                 <label for="location">{{ __('Location') }}</label>
-                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required>
+                                <input id="location" type="text" class="form-control" name="location" value="{{ old('location') }}" required onchange="updateMap()">
                             </div>
+
+                            <div class="form-group">
+                                <label for="map_coordinates">Map Coordinates</label>
+                                <input type="hidden" name="map_coordinates" id="map_coordinates" class="form-control" value="{{ old('map_coordinates') }}">
+                            </div>
+                            <div id="map" style="height: 300px;"></div>
 
                             <div class="form-group">
                                 <label for="price">{{ __('Price') }}</label>
@@ -75,6 +81,42 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var map = L.map('map').setView([0, 0], 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap contributors'
+            }).addTo(map);
+
+            var marker = L.marker([0, 0], { draggable: true }).addTo(map);
+
+            marker.on('dragend', function (event) {
+                var position = marker.getLatLng();
+                document.getElementById('map_coordinates').value = position.lat + ',' + position.lng;
+            });
+            window.updateMap = function () {
+                var locationInput = document.getElementById('location').value;
+
+                if (locationInput) {
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(locationInput)}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data && data.length > 0) {
+                                var newCoordinates = [parseFloat(data[0].lat), parseFloat(data[0].lon)];
+                                map.setView(newCoordinates, 15);
+                                marker.setLatLng(newCoordinates);
+                                document.getElementById('map_coordinates').value = newCoordinates.join(',');
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching coordinates:', error);
+                        });
+                }
+            };
+        });
+    </script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 @endsection
 
 @section('styles')
