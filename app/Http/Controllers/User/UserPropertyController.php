@@ -121,6 +121,10 @@ class UserPropertyController extends Controller
                 throw new \Exception('Mismatch in total amount.');
             }
 
+            $rental->status = 'Payment Completed';
+
+            $rental->save();
+
             // Create a Stripe Checkout session
             $session = \Stripe\Checkout\Session::create([
                 'payment_method_types' => ['card'],
@@ -146,13 +150,13 @@ class UserPropertyController extends Controller
 
     public function Stripe_success()
     {
-        return view('user.booking.payment-success');
+        return view('user.property.success');
     }
 
     public function myRenting()
     {
         $user = auth()->user();
-        $rentedProperties = $user->rentals()->with('property')->get();
+        $rentedProperties = $user->rentals()->with('property')->paginate(5);
 
         return view('user.property.my_renting')->with('rentedProperties', $rentedProperties);
     }
