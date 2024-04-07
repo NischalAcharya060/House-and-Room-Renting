@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="container">
+        <h4 class="font-weight-bold py-3 mb-4">Renting </h4>
         <div class="row">
             <div class="col-md-12">
                 @if($rentals->isEmpty())
@@ -16,7 +17,7 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>#</th>
+                            <th>S.N</th>
                             <th>Property</th>
                             <th>User Name</th>
                             <th>Rental Duration</th>

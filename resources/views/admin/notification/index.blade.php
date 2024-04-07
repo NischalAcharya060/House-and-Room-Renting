@@ -13,37 +13,37 @@
             </div>
         @endif
 
-{{--        @if($notifications->isEmpty())--}}
-{{--            <div class="alert alert-danger">--}}
-{{--                <p>No notifications at this time.</p>--}}
-{{--            </div>--}}
-{{--        @else--}}
-{{--            <div class="table-responsive">--}}
-{{--                <table class="table table-bordered table-hover">--}}
-{{--                    <thead>--}}
-{{--                    <tr>--}}
-{{--                        <th>S.N</th>--}}
-{{--                        <th>Added By</th>--}}
-{{--                        <th>Message</th>--}}
-{{--                        <th>Status</th>--}}
-{{--                        <th>Actions</th>--}}
-{{--                    </tr>--}}
-{{--                    </thead>--}}
-{{--                    <tbody>--}}
-{{--                    @foreach($notifications as $notification)--}}
-{{--                        <tr>--}}
-{{--                            <td>{{ $loop->iteration }}</td>--}}
-{{--                            <td>--}}
-{{--                                <p>Nischal Acharya added a property</p>--}}
-{{--                            </td>--}}
-{{--                            <td>{{ $notification->message }}</td>--}}
-{{--                            <td>--}}
-{{--                                @if($notification->is_read)--}}
-{{--                                    <span class="badge badge-success">Read</span>--}}
-{{--                                @else--}}
-{{--                                    <span class="badge badge-warning">Unread</span>--}}
-{{--                                @endif--}}
-{{--                            </td>--}}
+        @if($notifications->isEmpty())
+            <div class="alert alert-danger">
+                <p>No notifications at this time.</p>
+            </div>
+        @else
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>S.N</th>
+                        <th>Added By</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($notifications as $notification)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                <p>Nischal Acharya added a property</p>
+                            </td>
+                            <td>{{ $notification->message }}</td>
+                            <td>
+                                @if($notification->is_read)
+                                    <span class="badge badge-success">Read</span>
+                                @else
+                                    <span class="badge badge-warning">Unread</span>
+                                @endif
+                            </td>
 {{--                            <td>--}}
 {{--                                @unless($notification->is_read)--}}
 {{--                                    <button class="btn btn-primary" onclick="markAsRead('{{ route('admin.notifications.markAsRead', ['notification' => $notification->id]) }}')">Mark as Read</button>--}}
@@ -54,12 +54,12 @@
 {{--                                    Property Not Available--}}
 {{--                                @endif--}}
 {{--                            </td>--}}
-{{--                        </tr>--}}
-{{--                    @endforeach--}}
-{{--                    </tbody>--}}
-{{--                </table>--}}
-{{--            </div>--}}
-{{--        @endif--}}
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        @endif
 
         <script>
             function markAsRead(url) {
