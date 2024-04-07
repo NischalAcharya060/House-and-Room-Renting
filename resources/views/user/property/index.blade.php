@@ -34,10 +34,7 @@
                             <p class="card-text">Location: {{ $property->location }}</p>
                             <p class="card-text">Price: Rs. {{ $property->price }}</p>
                             <div class="d-grid gap-2">
-                                <form method="POST" action="{{ route('user.properties.rent', ['property' => $property->id]) }}">
-                                    @csrf
-                                    <button type="submit" class="btn ">Rent</button>
-                                </form>
+                                <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn">Rent</a>
                                 <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn">View Property</a>
                             </div>
                         </div>

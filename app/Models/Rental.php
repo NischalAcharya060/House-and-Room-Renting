@@ -17,6 +17,8 @@ class Rental extends Model
         'property_id',
         'user_id',
         'rental_duration',
+        'total_amount',
+        'status',
     ];
 
     public function user()

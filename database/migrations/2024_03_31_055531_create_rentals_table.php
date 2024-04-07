@@ -16,6 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('property_id');
             $table->unsignedBigInteger('user_id');
             $table->integer('rental_duration');
+            $table->decimal('total_amount', 10, 2);
+            $table->string('status')->default('pending');
             $table->timestamps();
 
             // Define foreign key constraints

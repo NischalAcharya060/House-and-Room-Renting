@@ -87,7 +87,10 @@ Route::delete('/admin/properties/{property}', [PropertyController::class, 'destr
 Route::middleware('auth')->group(function () {
     Route::get('/user/properties', [UserPropertyController::class, 'index'])->name('user.properties.index');
     Route::get('/user/properties/{property}', [UserPropertyController::class, 'show'])->name('user.properties.show');
+    Route::post('/user/properties/{propertyId}/confirm', [UserPropertyController::class, 'confirm'])->name('user.properties.confirm');
     Route::post('/user/properties/{property}/rent', [UserPropertyController::class, 'rent'])->name('user.properties.rent');
+    Route::post('/stripe_payment', [UserPropertyController::class, 'Stripe_initiate'])->name('user.bookings.stripe.payment');
+    Route::get('/stripe_success', [UserPropertyController::class, 'Stripe_success'])->name('user.bookings.stripe.success');
     Route::get('/user/my_renting', [UserPropertyController::class, 'myRenting'])->name('user.my-renting');
 });
 
