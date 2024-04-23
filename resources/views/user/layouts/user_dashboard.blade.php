@@ -21,6 +21,36 @@
         .cta-btn:hover{
             color: white;
         }
+        .search-btn {
+            background-color: #ffffff;
+            border: 1px solid black;
+            border-radius: 7px;
+            color: black;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            padding: .375rem .75rem;
+            display: inline-block;
+        }
+
+        .search-btn:hover {
+            background-color: #FF8C00;
+            border-color: #FF8C00;
+            color: white;
+            text-decoration: none;
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 <body>

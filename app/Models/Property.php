@@ -25,6 +25,11 @@ class Property extends Model
         'property_owner',
         'property_owner_phone_no',
         'status',
+        'kitchen',
+        'bedrooms',
+        'bathrooms',
+        'toilets',
+        'rooms',
     ];
 
     public function rentals()

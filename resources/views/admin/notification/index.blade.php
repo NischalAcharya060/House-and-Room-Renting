@@ -30,32 +30,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    @foreach($notifications as $notification)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                <p>Nischal Acharya added a property</p>
-                            </td>
-                            <td>{{ $notification->message }}</td>
-                            <td>
-                                @if($notification->is_read)
-                                    <span class="badge badge-success">Read</span>
-                                @else
-                                    <span class="badge badge-warning">Unread</span>
-                                @endif
-                            </td>
-{{--                            <td>--}}
-{{--                                @unless($notification->is_read)--}}
-{{--                                    <button class="btn btn-primary" onclick="markAsRead('{{ route('admin.notifications.markAsRead', ['notification' => $notification->id]) }}')">Mark as Read</button>--}}
-{{--                                @endunless--}}
-{{--                                @if($notification->facility)--}}
-{{--                                    <a href="{{ route('user.facility_submissions.view', ['id' => $notification->property->id]) }}" style="text-decoration: none; color: black">View Submission</a>--}}
-{{--                                @else--}}
-{{--                                    Property Not Available--}}
-{{--                                @endif--}}
-{{--                            </td>--}}
-                        </tr>
-                    @endforeach
+                    
                     </tbody>
                 </table>
             </div>

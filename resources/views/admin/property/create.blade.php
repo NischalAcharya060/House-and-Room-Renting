@@ -68,6 +68,26 @@
                         <label for="image">Image</label>
                         <input type="file" name="image" id="image" class="form-control">
                     </div>
+                    <div class="form-group">
+                        <label for="kitchen">Number of Kitchens</label>
+                        <input type="number" name="kitchen" id="kitchen" class="form-control" value="{{ old('kitchen') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="bedrooms">Number of Bedrooms</label>
+                        <input type="number" name="bedrooms" id="bedrooms" class="form-control" value="{{ old('bedrooms') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="bathrooms">Number of Bathrooms</label>
+                        <input type="number" name="bathrooms" id="bathrooms" class="form-control" value="{{ old('bathrooms') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="toilets">Number of Toilets</label>
+                        <input type="number" name="toilets" id="toilets" class="form-control" value="{{ old('toilets') }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="floors">Number of Rooms</label>
+                        <input type="number" name="rooms" id="rooms" class="form-control" value="{{ old('rooms') }}">
+                    </div>
                     <button type="submit" class="btn btn-primary">Add Property</button>
                 </form>
             </div>

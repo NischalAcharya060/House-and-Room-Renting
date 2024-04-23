@@ -18,7 +18,10 @@ return new class extends Migration
             $table->integer('rental_duration');
             $table->decimal('total_amount', 10, 2);
             $table->string('status')->default('pending');
+            $table->unsignedInteger('ratings')->default(0);
+            $table->text('reviews')->nullable();
             $table->timestamps();
+
 
             // Define foreign key constraints
             $table->foreign('property_id')->references('id')->on('properties')->onDelete('cascade');

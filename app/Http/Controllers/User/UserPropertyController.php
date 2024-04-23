@@ -12,13 +12,39 @@ use Illuminate\Support\Facades\Validator;
 
 class UserPropertyController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // Get all properties
         $properties = Property::all();
+        $sortBy = $request->input('sort_by', 'price_lowest');
 
-        return view('user.property.index', ['properties' => $properties]);
+        $search = $request->input('search');
+    $sortBy = $request->input('sort_by', 'price_lowest');
+
+    $propertyQuery = Property::where('name', 'like', "%$search%")
+        ->orWhere('location', 'like', "%$search%");
+
+    switch ($sortBy) {
+        case 'price_highest':
+            $propertyQuery->orderByDesc('price');
+            break;
+        case 'price_lowest':
+        default:
+            $propertyQuery->orderBy('price');
+            break;
     }
+
+    $properties = $propertyQuery->get();
+
+        return view('user.property.index',  compact('properties', 'search', 'sortBy'));
+    }
+
+    public function search(Request $request)
+{
+    
+
+    return view('user.property.index', compact('properties', 'search', 'sortBy'));
+}
 
     public function show($id)
     {
@@ -154,11 +180,12 @@ class UserPropertyController extends Controller
     }
 
     public function myRenting()
-    {
-        $user = auth()->user();
-        $rentedProperties = $user->rentals()->with('property')->paginate(5);
+{
+    $user = auth()->user();
+    $rentedProperties = $user->rentals()->with('property')->latest()->paginate(5);
 
-        return view('user.property.my_renting')->with('rentedProperties', $rentedProperties);
-    }
+    return view('user.property.my_renting')->with('rentedProperties', $rentedProperties);
+}
+
 
 }

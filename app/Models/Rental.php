@@ -19,6 +19,8 @@ class Rental extends Model
         'rental_duration',
         'total_amount',
         'status',
+        'ratings',
+        'reviews',
     ];
 
     public function user()

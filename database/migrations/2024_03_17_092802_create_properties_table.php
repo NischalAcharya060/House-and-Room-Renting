@@ -23,6 +23,11 @@ class CreatePropertiesTable extends Migration
             $table->string('property_owner')->nullable();
             $table->string('property_owner_phone_no')->nullable();
             $table->string('status')->default('available');
+            $table->unsignedInteger('kitchen')->nullable();
+            $table->unsignedInteger('bedrooms')->nullable();
+            $table->unsignedInteger('bathrooms')->nullable();
+            $table->unsignedInteger('toilets')->nullable();
+            $table->unsignedInteger('rooms')->nullable();
             $table->timestamps();
         });
     }
