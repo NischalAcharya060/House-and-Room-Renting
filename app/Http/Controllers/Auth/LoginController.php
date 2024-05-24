@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Facades\Log;
+
 
 class LoginController extends Controller
 {
@@ -17,27 +19,31 @@ class LoginController extends Controller
     }
 
     public function loginPost(Request $request)
-    {
-        // Validate the form data
-        $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+{
+    // Validate the form data
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required',
+    ]);
 
-        // Attempt to log in the user
-        $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)) {
-            // Check the user type and redirect accordingly
-            if (Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'landlord') {
-                return redirect()->route('admin.dashboard');
-            } elseif (Auth::user()->user_type == 'user') {
-                return redirect()->route('user.dashboard');
-            }
-        }        
+    // Attempt to log in the user
+    $credentials = $request->only('email', 'password');
+    if (Auth::attempt($credentials)) {
+        // Log successful login attempt
+        Log::info('User logged in successfully: ' . Auth::user()->email);
 
-        // Authentication failed
-        return back()->withErrors(['email' => 'Invalid email or password'])->withInput();
-    }
+        // Check the user type and redirect accordingly
+        if (Auth::user()->user_type == 'admin' || Auth::user()->user_type == 'landlord') {
+            return redirect()->route('admin.dashboard');
+        } elseif (Auth::user()->user_type == 'user') {
+            return redirect()->route('user.dashboard');
+        }
+    }        
+
+    // Authentication failed
+    Log::info('Login attempt failed for email: ' . $request->input('email'));
+    return back()->withErrors(['email' => 'Invalid email or password'])->withInput();
+}
 
     public function redirectToGoogle()
     {

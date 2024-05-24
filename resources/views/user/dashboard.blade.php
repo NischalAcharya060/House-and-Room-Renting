@@ -18,10 +18,6 @@
 
         <h2 class="h1 hero-title">Find Your Dream House By Us</h2>
 
-        <p class="hero-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.
-        </p>
-
         <button class="btn">Make An Enquiry</button>
 
       </div>
@@ -98,11 +94,6 @@
 
         </ul>
 
-        <p class="callout">
-          "Enimad minim veniam quis nostrud exercitation
-          llamco laboris. Lorem ipsum dolor sit amet"
-        </p>
-
       </div>
 
     </div>
@@ -119,174 +110,37 @@
 
       <h2 class="h2 section-title">Featured Listings</h2>
 
-      <ul class="property-list has-scrollbar">
-
-        <li>
-          <div class="property-card">
-
-            <figure class="card-banner">
-
-              <a href="#">
-                <img src="{{ asset("img/modern.webp") }}" alt="New Apartment Nice View" class="w-100">
-              </a>
-
-              <div class="card-badge green">For Rent</div>
-
-              <div class="banner-actions">
-
-                <button class="banner-actions-btn">
-                  <ion-icon name="location"></ion-icon>
-
-                  <address>Belmont Gardens, Chicago</address>
-                </button>
-
-              </div>
-
-            </figure>
-
-            <div class="card-content">
-
-              <div class="card-price">
-                <strong>$34,900</strong>/Month
-              </div>
-
-              <h3 class="h3 card-title">
-                <a href="#">New Apartment Nice View</a>
-              </h3>
-
-              <p class="card-text">
-                Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
-              </p>
-
-            </div>
-
+          <div class="row">
+              @if($properties->isEmpty())
+                  <div class="col-12 text-center">
+                      <p>No properties found.</p>
+                      <a href="{{ route('user.dashboard') }}" class="btn">Back</a>
+                  </div>
+              @else
+                  @foreach($properties as $property)
+                      <div class="col-md-4">
+                          <div class="card mb-4">
+                              @if($property->image_url)
+                                  <img src="{{ asset('storage/' . $property->image_url) }}" alt="Property Image">
+                              @else
+                                  <img src="https://media.designcafe.com/wp-content/uploads/2023/07/05141750/aesthetic-room-decor.jpg" alt="Default Profile Picture" class="card-img-top">
+                              @endif
+                              <div class="card-body">
+                                  <h5 class="card-title">{{ $property->name }}</h5>
+                                  <p class="card-text">{{ $property->description }}</p>
+                                  <p class="card-text">Location: {{ $property->location }}</p>
+                                  <p class="card-text">Price: Rs. {{ $property->price }}</p>
+                                  <div class="d-grid gap-2">
+                                      <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn">Rent</a>
+                                      <a href="{{ route('user.properties.show', ['property' => $property->id]) }}" class="btn">View Property</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  @endforeach
+              @endif
           </div>
-        </li>
 
-        <li>
-          <div class="property-card">
-
-            <figure class="card-banner">
-
-              <a href="#">
-                <img src="{{ asset("img/modern.webp") }}" alt="Modern Apartments" class="w-100">
-              </a>
-
-              <div class="card-badge orange">For Sales</div>
-
-              <div class="banner-actions">
-
-                <button class="banner-actions-btn">
-                  <ion-icon name="location"></ion-icon>
-
-                  <address>Belmont Gardens, Chicago</address>
-                </button>
-
-              </div>
-
-            </figure>
-
-            <div class="card-content">
-
-              <div class="card-price">
-                <strong>$34,900</strong>/Month
-              </div>
-
-              <h3 class="h3 card-title">
-                <a href="#">Modern Apartments</a>
-              </h3>
-
-              <p class="card-text">
-                Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
-              </p>
-
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="property-card">
-
-            <figure class="card-banner">
-
-              <a href="#">
-                <img src="{{ asset("img/modern.webp") }}" alt="Comfortable Apartment" class="w-100">
-              </a>
-
-              <div class="card-badge green">For Rent</div>
-
-              <div class="banner-actions">
-
-                <button class="banner-actions-btn">
-                  <ion-icon name="location"></ion-icon>
-
-                  <address>Belmont Gardens, Chicago</address>
-                </button>
-
-              </div>
-
-            </figure>
-
-            <div class="card-content">
-
-              <div class="card-price">
-                <strong>$34,900</strong>/Month
-              </div>
-
-              <h3 class="h3 card-title">
-                <a href="#">Comfortable Apartment</a>
-              </h3>
-
-              <p class="card-text">
-                Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
-              </p>
-
-            </div>
-
-          </div>
-        </li>
-
-        <li>
-          <div class="property-card">
-
-            <figure class="card-banner">
-
-              <a href="#">
-                <img src="{{ asset("img/modern.webp") }}" alt="Luxury villa in Rego Park" class="w-100">
-              </a>
-
-              <div class="card-badge green">For Rent</div>
-
-              <div class="banner-actions">
-
-                <button class="banner-actions-btn">
-                  <ion-icon name="location"></ion-icon>
-
-                  <address>Belmont Gardens, Chicago</address>
-                </button>
-
-              </div>
-
-            </figure>
-
-            <div class="card-content">
-
-              <div class="card-price">
-                <strong>$34,900</strong>/Month
-              </div>
-
-              <h3 class="h3 card-title">
-                <a href="#">Luxury villa in Rego Park</a>
-              </h3>
-
-              <p class="card-text">
-                Beautiful Huge 1 Family House In Heart Of Westbury. Newly Renovated With New Wood
-              </p>
-            </div>
-          </div>
-        </li>
-      </ul>
     </div>
   </section>
 @endsection

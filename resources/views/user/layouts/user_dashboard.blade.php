@@ -238,10 +238,6 @@
                         <img src="{{ asset('img/logo.png') }}" alt="Bashai logo">
                     </a>
 
-                    <p class="section-text">
-                        Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.
-                    </p>
-
                     <ul class="contact-list">
 
                         <li>

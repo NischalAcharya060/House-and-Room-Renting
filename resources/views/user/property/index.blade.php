@@ -36,7 +36,7 @@
             </div>
         </form>
 
-    
+
         <div class="row">
             @if($properties->isEmpty())
                 <div class="col-12 text-center">
