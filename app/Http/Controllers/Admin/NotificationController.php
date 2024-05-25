@@ -30,8 +30,10 @@ class NotificationController extends Controller
     {
         $notification = Notifications::findOrFail($id);
 
+        // Update the status of the notification to 'rejected'
         $notification->update(['status' => 'rejected']);
 
+        // Delete the associated property if it exists
         if ($notification->property_id) {
             $property = Property::find($notification->property_id);
             if ($property) {
@@ -39,8 +41,16 @@ class NotificationController extends Controller
             }
         }
 
+        // Delete the last stored property if it exists
+        $lastProperty = Property::latest()->first();
+        if ($lastProperty) {
+            $lastProperty->delete();
+        }
+
+        // Delete the notification itself
         $notification->delete();
 
+        // Redirect back or to a specific route
         return redirect()->back()->with('success', 'Notification rejected successfully.');
     }
 
