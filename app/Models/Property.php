@@ -30,6 +30,7 @@ class Property extends Model
         'bathrooms',
         'toilets',
         'rooms',
+        'submitted_by',
     ];
 
     public function rentals()

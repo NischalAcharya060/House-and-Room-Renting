@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use Illuminate\Support\Facades\Auth;
 
 class UserPropertySubmissionController extends Controller
 {
@@ -38,6 +39,9 @@ class UserPropertySubmissionController extends Controller
             $property->property_owner = $request->property_owner;
             $property->property_owner_phone_no = $request->property_owner_phone_no;
 
+            // Save the user name who submitted the property (assuming user is authenticated)
+            $property->submitted_by = Auth::user()->name;
+
             // Handle file upload
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('property_images', 'public');
@@ -50,7 +54,6 @@ class UserPropertySubmissionController extends Controller
             // Redirect back with success message
             return redirect()->route('properties_submission.show')->with('success', 'Property submission received. Admin will review shortly.');
         } catch (\Exception $e) {
-            dd($e);
             // Log the exception or handle it as needed
             return redirect()->back()->withInput()->with('error', 'Failed to submit property. Please try again.');
         }

@@ -48,6 +48,7 @@
                             <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Type</th>
                             <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Owner</th>
                             <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Property Owner Phone No</th>
+                            <th style="max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">Submitted By</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -70,18 +71,19 @@
                                 <td>{{ $property->property_type }}</td>
                                 <td>{{ $property->property_owner }}</td>
                                 <td>{{ $property->property_owner_phone_no }}</td>
+                                <td>{{ $property->submitted_by }}</td>
                                 <td>
                                     <a href="{{ route('admin.properties.show', $property->id) }}" class="btn btn-info btn-sm" title="View">
-                                        <i class='bx bx-show'></i> 
+                                        <i class='bx bx-show'></i>
                                     </a>
                                     <a href="{{ route('admin.properties.edit', $property->id) }}" class="btn btn-warning btn-sm" title="Edit">
-                                        <i class='bx bx-edit'></i> 
+                                        <i class='bx bx-edit'></i>
                                     </a>
                                     <form action="{{ route('admin.properties.destroy', $property->id) }}" method="POST" style="display: inline;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" title="Delete" onclick="return confirm('Are you sure you want to delete this property?')">
-                                            <i class='bx bx-trash'></i> 
+                                            <i class='bx bx-trash'></i>
                                         </button>
                                     </form>
                                 </td>

@@ -28,6 +28,7 @@ class CreatePropertiesTable extends Migration
             $table->unsignedInteger('bathrooms')->nullable();
             $table->unsignedInteger('toilets')->nullable();
             $table->unsignedInteger('rooms')->nullable();
+            $table->string('submitted_by')->nullable();
             $table->timestamps();
         });
     }
