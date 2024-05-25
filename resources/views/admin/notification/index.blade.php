@@ -3,6 +3,7 @@
 @section('title', 'Notification')
 
 @section('header', 'Notification')
+
 @section('content')
     <div class="container">
         <h4 class="font-weight-bold py-3 mb-4">Notification</h4>
@@ -30,32 +31,30 @@
                     </tr>
                     </thead>
                     <tbody>
-                    
+                    @foreach($notifications as $notification)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $notification->added_by }}</td>
+                            <td>{{ $notification->message }}</td>
+                            <td>{{ $notification->status }}</td>
+                            <td>
+                                @if($notification->status === 'pending')
+                                    <form action="{{ route('admin.notification.accept', $notification->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-success">Accept</button>
+                                    </form>
+                                    <form action="{{ route('admin.notification.reject', $notification->id) }}" method="post" class="d-inline">
+                                        @csrf
+                                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                    </form>
+                                @endif
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>
         @endif
-
-        <script>
-            function markAsRead(url) {
-                event.preventDefault();
-                fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
-                    },
-                    body: JSON.stringify({}),
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data);
-                    })
-                    .catch(error => {
-                        console.error(error);
-                    });
-            }
-        </script>
     </div>
 @endsection
 

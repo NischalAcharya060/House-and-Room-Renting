@@ -127,6 +127,8 @@ Route::middleware(['auth', 'user_type:admin,landlord'])->group(function () {
 // Notification Route
 Route::middleware(['auth', 'user_type:admin'])->group(function () {
 Route::get('/admin/notifications', [NotificationController::class, 'index'])->name('admin.notifications.index');
+    Route::post('admin/notification/accept/{id}', [NotificationController::class, 'accept'])->name('admin.notification.accept');
+    Route::post('admin/notification/reject/{id}', [NotificationController::class, 'reject'])->name('admin.notification.reject');
 });
 
 // Admin Contact form Route

@@ -71,7 +71,7 @@
                                 <td>{{ $property->property_type }}</td>
                                 <td>{{ $property->property_owner }}</td>
                                 <td>{{ $property->property_owner_phone_no }}</td>
-                                <td>{{ $property->submitted_by }}</td>
+                                <td>{{ $property->submitted_by ?? 'admin' }}</td>
                                 <td>
                                     <a href="{{ route('admin.properties.show', $property->id) }}" class="btn btn-info btn-sm" title="View">
                                         <i class='bx bx-show'></i>

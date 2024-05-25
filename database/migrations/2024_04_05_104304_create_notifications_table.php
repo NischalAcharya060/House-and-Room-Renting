@@ -14,9 +14,11 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable()->constrained();
-            $table->unsignedBigInteger('property_id');
+            $table->unsignedBigInteger('property_id')->nullable()->default(null);
             $table->string('message');
             $table->boolean('is_read')->default(false);
+            $table->string('added_by')->nullable();
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
     }

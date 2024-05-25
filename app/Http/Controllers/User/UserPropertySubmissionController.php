@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Property;
+use App\Models\Notifications;
 use Illuminate\Support\Facades\Auth;
 
 class UserPropertySubmissionController extends Controller
@@ -51,6 +52,13 @@ class UserPropertySubmissionController extends Controller
             // Save the property
             $property->save();
 
+            // Create a notification
+            $notification = new Notifications();
+            $notification->added_by = Auth::user()->name;
+            $notification->message = 'New property submission: ' . $property->name;
+            $notification->status = 'pending';
+            $notification->save();
+
             // Redirect back with success message
             return redirect()->route('properties_submission.show')->with('success', 'Property submission received. Admin will review shortly.');
         } catch (\Exception $e) {
@@ -58,5 +66,4 @@ class UserPropertySubmissionController extends Controller
             return redirect()->back()->withInput()->with('error', 'Failed to submit property. Please try again.');
         }
     }
-
 }
