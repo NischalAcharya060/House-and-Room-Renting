@@ -23,7 +23,7 @@
             <h4>Edit Property</h4>
         </div>
         <div class="card-body">
-            <form action="{{ route('admin.properties.update', $property->id) }}" method="POST">
+            <form action="{{ route('admin.properties.update', $property->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="form-group">
@@ -58,7 +58,7 @@
                         <option value="room" {{ old('property_type', $property->property_type) === 'room' ? 'selected' : '' }}>Room</option>
                         <option value="floor" {{ old('property_type', $property->property_type) === 'floor' ? 'selected' : '' }}>Floor</option>
                     </select>
-                </div>                
+                </div>
                 <div class="form-group">
                     <label for="property_owner">Property Owner</label>
                     <input type="text" name="property_owner" id="property_owner" class="form-control" value="{{ $property->property_owner }}">

@@ -114,15 +114,14 @@ class PropertyController extends Controller
             $property->property_owner = $request->property_owner;
             $property->property_owner_phone_no = $request->property_owner_phone_no;
 
-            // Handle file upload
+            // Check if a new image is being uploaded
             if ($request->hasFile('image')) {
-                // Delete previous image if exists
+                // Delete the old image if it exists
                 if ($property->image_url) {
-                    Storage::delete($property->image_url);
+                    Storage::disk('public')->delete($property->image_url);
                 }
-
-                // Store new image
-                $imagePath = $request->file('image')->store('property_images');
+                // Upload the new image
+                $imagePath = $request->file('image')->store('property_images', 'public');
                 $property->image_url = $imagePath;
             }
 
@@ -132,7 +131,6 @@ class PropertyController extends Controller
             // Redirect with success message
             return redirect()->route('admin.properties.index')->with('success', 'Property updated successfully');
         } catch (\Exception $e) {
-            dd($e);
             // Log the exception
             \Log::error('Failed to update property: ' . $e->getMessage());
 
@@ -140,6 +138,7 @@ class PropertyController extends Controller
             return redirect()->back()->with('error', 'Failed to update property. Please try again.');
         }
     }
+
 
 
     public function destroy($id)
